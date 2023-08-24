@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: hello-world
-        image: nginx
+        image: yeonji121/hello-world:10
         ports:
         - containerPort: 8080
