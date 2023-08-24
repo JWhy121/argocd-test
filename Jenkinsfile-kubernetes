@@ -41,7 +41,7 @@ spec:
     stage('Checkout') {
       steps {
         container('maven') {
-          git branch: 'main', url: 'https://github.com/JWhy121/argocd-test'
+          git branch: 'main', url: 'https://github.com/JWhy121/source-maven-java-spring-hello-webapp'
         }
       }
     }
@@ -62,7 +62,7 @@ spec:
     stage('Build & Tag & Push Docker Image') {
       steps {
         container('kaniko') {
-          sh 'executor --context=dir:///home/jenkins/agent/workspace/kube_pipeline/ --destination=yeonji121/hello-world:$BUILD_NUMBER --destination=yeonji121/hello-world:latest'
+          sh 'executor --context=dir://$WORKSPACE --destination=yeonji121/hello-world:$BUILD_NUMBER --destination=yeonji121/hello-world:latest'
         }
       }
     }
